@@ -6,9 +6,9 @@ class Crawl < Formula
 
   depends_on "pkg-config" => :build
   depends_on "python@3.12" => :build
+  depends_on "ncurses"
   depends_on "pcre"
   depends_on "sqlite"
-  depends_on "ncurses"
 
   def install
     cd "source" do
