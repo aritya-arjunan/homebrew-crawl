@@ -13,7 +13,7 @@ jobs:
   test-bot:
     strategy:
       matrix:
-        os: [macos-14, macos-15] # Build bottles for Apple Silicon
+        os: [macos-14, macos-15]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Set up Homebrew
@@ -26,12 +26,12 @@ jobs:
       - name: Run brew test-bot --only-setup
         run: brew test-bot --only-setup
 
-      # Test the Formula (CLI) and Build Bottles
+      # Build CLI Bottle
       - name: Build Crawl Formula
         run: |
           brew test-bot --only-formulae --root-url=https://ghcr.io/v2/aritya-arjunan/crawl crawl
 
-      # Test the Cask (GUI) - Casks are not bottled, just verified
+      # Verify GUI Cask
       - name: Verify Crawl Cask
         run: |
           brew install --cask crawl-tiles
